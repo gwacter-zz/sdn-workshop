@@ -1,6 +1,6 @@
 # Software Defined Networking Workshop
 
-We are running a workshop at this year's eResearch conference in Queenstown. It is meant to be a taster for people who have not heard of Software Defined networking. The first part are some talks on "What is SDN" and "Why you might use it". The second part is a handson session where students get to play with the ryu controller and (time permitting) the [Faucet open source SDN switch](https://github.com/REANNZ/faucet).
+We are running a workshop at this year's eResearch conference in Queenstown. It is meant to be a taster for people who have not heard of Software Defined networking. The first part are some talks on "What is SDN" and "Why you might use it". The second part is a handson session where students get to play with mininet, ryu controller with a simple application and (time permitting) the [Faucet open source SDN switch](https://github.com/REANNZ/faucet).
 
 ## Logistics
 
