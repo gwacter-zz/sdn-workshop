@@ -1,8 +1,9 @@
-Materials for the presentations have come from a variety of sources including:
+Ideas for this workshop have come from a variety of sources including:
 
 - Open Networking Foundation
 - Scott Shenker's EE122 course notes
-- Ryu tutorials
+- Raj Jain's excellent Openflow, SDN & NFVs tutorial
+- Ryubook documentation and Ryu getting started tutorials
 
 The exercises include material developed by Dean Pemberton and Bryan Ng.
 
