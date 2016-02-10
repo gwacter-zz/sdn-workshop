@@ -23,7 +23,7 @@ root@mininet-vm:~# mn -c
 ## Start the Ryu controller
 
 ```
-root@mininet-vm:~# ryu-manager --verbose /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py
+root@mininet-vm:~# ryu-manager --verbose /ryu/ryu/app/simple_switch_13.py
 loading app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py
 loading app ryu.controller.ofp_handler
 instantiating app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py of SimpleSwitch13
