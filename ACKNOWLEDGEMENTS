@@ -5,6 +5,6 @@ Ideas for this workshop have come from a variety of sources including:
 - Raj Jain's excellent Openflow, SDN & NFVs tutorial
 - Ryubook documentation and Ryu getting started tutorials
 
-The exercises include material developed by Dean Pemberton and Bryan Ng.
+The exercises were initially developed by the Ryu developers and extended by Dean Pemberton and Bryan Ng.
 
 We are grateful to the efforts of the Ryu developers as well as REANNZ who have developed Faucet and Gauge (Brad Cowie, Christopher Lorier and Joe Stringer).
