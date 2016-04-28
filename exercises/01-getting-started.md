@@ -1,14 +1,27 @@
 # Mininet/Openflow 
 
+#PreLab Setup,
+open the VM located at /local/scratch/sdn-workshop in VirtualBox
+>VirtualBox mininet.ovf
+
+Log in with the username and password mininet
+
+Obtain an Ip address from the dhcp server.
+dhcp eth0
+
+ensureing that the VirtualBox network has been set to bridged adapter.
+Devices->Network->Network setting-> bridged adapter
+
+now you should be able to ping from the underlying host to the VM...
+
 
 # Objectives
 
 In this lab, you will start by learning the basics of running Mininet in a virtual machine. Mininet facilitates creating and manipulating Software Defined Networking components. Through mininet you will explore OpenFlow, which is an open interface for controlling the network elements through their forwarding tables. A network element may be converted into a switch, router or even an access points via low-level primitives defined in OpenFlow. This lab is your opportunity to gain hands-on experience with the platforms and debugging tools most useful for developing network control applications on OpenFlow.
 
-* Access Mininet on the hosted virtual machine
+* Access Mininet on your own private VM.
 * Run the Ryu controller with a sample application
 * Use various commands to gain experience with OpenFlow control of OpenvSwitch
-
 
 
 # Network Topology
@@ -40,62 +53,14 @@ The topology we are using is similar to the one in the Openflow Tutorial (https:
 	 +----+          +----+          +----+
 
 
-# You will need a Number
+At the command prompt type,
 
-The instructor should have given everyone a different number.  This will dictate which virtual machine you will be using.  If the instructor happened to forget, then this is the time to remind them.
+> mn --topo single,3 --mac --controller remote --switch ovsk,protocols=OpenFlow13
+ 
+This should present you with the following terminal output..
+ 
+mininet>
 
-Write this number down on a piece of paper.
-
-Anytime this lab mentions <NUMBER> substitute it with the number you have written down.
-
-
-# Connect to your SDN VM with SSH
-
-
-Open a terminal window on your machine. If you don't know how to do this ask an instructor for
-help.
-
-Make sure 
-
-At the prompt type:
+You are now in a virtual network you have created, we can do interesting things in this network between the nodes!!!
 
 
-	ssh ryu@192.168.122.<NUMBER>      (This is 100 + what your PC number was)
-
-
-When you see the warning that looks something like this:
-
-	The authenticity of host '192.168.122.<NUMBER> (192.168.122.<NUMBER>)' can't be established.
-	RSA key fingerprint is e8:05:43:d5:9a:4b:72:ad:c9:92:97:ca:df:32:86:ab.
-	Are you sure you want to continue connecting (yes/no)? yes
-
-	Type "yes" and press ENTER.
-
-
-When prompted with "ryu@192.168.122.<NUMBER>'s password:" enter the password ryu
-
-That should be it. You are now connected to a terminal session on your machine.
-
-
-
-```
-$ ssh ryu@192.168.122.<NUMBER>
-ryu@192.168.122.<NUMBER>'s password:
-Welcome to Ubuntu 13.04 (GNU/Linux 3.8.0-19-generic x86_64)
-
-* Documentation:  https://help.ubuntu.com/
-Your Ubuntu release is not supported anymore.
-For upgrade information, please visit:
-http://www.ubuntu.com/releaseendoflife
-
-New release '13.10' available.
-Run 'do-release-upgrade' to upgrade to it.
-
-Last login: Wed Sep  3 08:22:23 2015
-sysadm@sdnXXX:~$
-```
-
-To log out you
-can type:
-
-	exit
