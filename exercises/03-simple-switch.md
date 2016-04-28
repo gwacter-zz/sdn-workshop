@@ -23,7 +23,7 @@ root@mininet-vm:~# mn -c
 ## Start the Ryu controller
 
 ```
-root@mininet-vm:~# ryu-manager --verbose /ryu/ryu/app/simple_switch_13.py
+root@mininet-vm:~# ryu-manager --verbose ~/ryu/ryu/app/simple_switch_13.py
 loading app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py
 loading app ryu.controller.ofp_handler
 instantiating app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py of SimpleSwitch13
@@ -102,7 +102,6 @@ OFPST_FLOW reply (OF1.3) (xid=0x2):
  cookie=0x0, duration=2.481s, table=0, n_packets=0, n_bytes=0, priority=0 actions=FLOOD,CONTROLLER:64
 mininet>
 ```
-
 
 
 # Passing packets
