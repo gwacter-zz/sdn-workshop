@@ -1,7 +1,20 @@
 # Mininet/Openflow 
 
 #PreLab Setup,
-open the VM located at /local/scratch/Mininet-VM in VirtualBox
+
+Open a terminal.
+
+Start VirtualBox:
+
+``
+VirtualBox
+``
+
+Choose Machine -> Add
+
+In the file dialog navigate to the directory /local/scratch/Mininet-VM
+
+Choose the file Mininet-VM.vbox
 
 Log in with the username and password mininet
 
