@@ -1,9 +1,9 @@
 # Adding a second application (Gauge)
 
-It is possible to add a second application to our data path.  This application won't be used to alter packet flow, but instead it will be used to monitor port statistics. Open a third ssh window and change to root.
+It is possible to add a second application to our data path.  This application won't be used to alter packet flow, but instead it will be used to monitor port statistics. Open a third ssh window and change to root (note that *ip-address* is the address used to access the guest OS from the host).
 
 ```
-$ssh sysadm@10.10.0.<NUMBER> 
+$ssh mininet@ip-address 
 $sudo bash
 # cd faucet
 # cp gauge.conf-dist /etc/opt/faucet/gauge.conf
@@ -30,7 +30,7 @@ In the third window, we start the Gauge application on a differnet port to stop 
 If you open a new window, you can monitor the statistics file and see new port stats written to the file every 10 seconds.
 
 ```
-ssh sysadm@10.10.0.<NUMBER>
+$ssh mininet@ip-address 
 $tail -f /var/log/faucet/ports.out
 ```
 
