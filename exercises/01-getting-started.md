@@ -54,7 +54,7 @@ The topology we are using is similar to the one in the Openflow Tutorial (https:
 
 At the command prompt type,
 
-> mn --topo single,3 --mac --controller remote --switch ovsk,protocols=OpenFlow13
+> mn --topo single,3 --mac --controller remote --switch ovsk
  
 This should present you with the following terminal output..
  
