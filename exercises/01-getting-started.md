@@ -1,8 +1,7 @@
 # Mininet/Openflow 
 
 #PreLab Setup,
-open the VM located at /local/scratch/sdn-workshop in VirtualBox
->VirtualBox mininet.ovf
+open the VM located at /local/scratch/Mininet-VM in VirtualBox
 
 Log in with the username and password mininet
 
