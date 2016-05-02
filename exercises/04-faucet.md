@@ -44,7 +44,7 @@ root@mininet-vm:~#
 # Look at the first Faucet config file
 
 ```
-# cat /etc/opt/faucet/faucet.yaml
+# cat /etc/ryu/faucet/faucet.yaml
 ```
 
 It should look something like this:
@@ -95,6 +95,9 @@ vlans:
 
 As you can see this places 10 ports on the device with Data Path ID 1 into vlan 100 (untagged).
 
+# You will need to set the FAUCET_CONFIG environment variable before starting faucet contrroller.
+
+export FAUCET_CONFIG=/etc/ryu/faucet/faucet.yaml
 
 
 # Start Ryu and the Faucet controller 
