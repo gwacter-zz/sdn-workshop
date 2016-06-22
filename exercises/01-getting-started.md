@@ -16,7 +16,7 @@ Choose File -> Import Appliance
 
 In the file dialog navigate to the directory /local/scratch/Mininet-VM
 
-Choose the file Mininet-VM.vbox
+Choose the file Mininet-VM.ova
 
 Log in with the username and password mininet
 
