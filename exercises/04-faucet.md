@@ -8,11 +8,6 @@ Faucet is an Openflow controller designed by the New Zealand research and educat
 
 Faucet has been implemented using the Ryu SDN controller framework.
 
-For more information about Faucet see:
-
- * Blog: (https://faucet-sdn.blogspot.co.nz/)
- * Source code: (https://github.com/REANNZ/faucet)
-
 It supports:
 
 * OpenFlow v1.3
@@ -21,11 +16,17 @@ It supports:
 * Port statistics
 * Coexisting with other OpenFlow controllers
 
+For more information about Faucet see:
+
+ * Blog: (https://faucet-sdn.blogspot.co.nz/)
+ * Source code: (https://github.com/REANNZ/faucet)
+
 In this lab we will:
 * Run the Ryu controller with the Faucet application
 * Use various commands to gain experience with the increased feature set of the Faucet software.
 * Run the Gauge software to see how a datapath can exist with multiple controller applications.
 
+Faucet is already installed, the assumption is that it has been installed as a system application rather than a per-user application (i.e. faucet isn't installed in a particular user's directory).
 
 #  Stop ryu-manager
 
@@ -100,16 +101,16 @@ vlans:
 
 As you can see this places 10 ports on the device with Data Path ID 1 into vlan 100 (untagged).
 
-# You will need to set the FAUCET_CONFIG environment variable before starting faucet contrroller.
+# Set environment variables
 
 export FAUCET_CONFIG=/etc/ryu/faucet/faucet.yaml
-
+export FAUCET_APP=/usr/local/lib/python2.7/dist-packages/ryu_faucet/org/onfsdn/faucet/
 
 # Start Ryu and the Faucet controller 
 You should still have 2 ssh sessions open. Start Ryu and the Faucet controller in the controller window.
 
 ```
-# ryu-manager --verbose ./faucet.py
+# ryu-manager --verbose $FAUCET_APP/faucet.py
 loading app ./faucet.py
 loading app ryu.controller.ofp_handler
 instantiating app None of DPSet
