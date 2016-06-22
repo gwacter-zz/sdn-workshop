@@ -1,6 +1,6 @@
 # Mininet/Faucet
 
-{{ https://pbs.twimg.com/profile_images/611397275860905984/8LpZGnOf.jpg |Thanks REANNZ}}
+Thanks to ![alt text](https://pbs.twimg.com/profile_images/611397275860905984/8LpZGnOf.jpg "REANNZ logo")
 
 # Objectives
 
