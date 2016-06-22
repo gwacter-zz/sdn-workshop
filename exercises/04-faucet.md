@@ -1,6 +1,6 @@
 # Mininet/Faucet
 
-{{ :2015:nsrc-tein-ait-noc:reannz-logo-grey-scale-v2-300x110.jpg |Thanks REANNZ}}
+{{ https://pbs.twimg.com/profile_images/611397275860905984/8LpZGnOf.jpg |Thanks REANNZ}}
 
 # Objectives
 
