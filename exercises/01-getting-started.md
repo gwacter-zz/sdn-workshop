@@ -1,6 +1,8 @@
 # Mininet/Openflow 
 
-#PreLab Setup,
+#PreLab Setup
+
+Note that this assumes you are using Linux and are using VirtualBox.
 
 Open a terminal.
 
@@ -10,7 +12,7 @@ Start VirtualBox:
 VirtualBox
 ``
 
-Choose Machine -> Add
+Choose File -> Import Appliance
 
 In the file dialog navigate to the directory /local/scratch/Mininet-VM
 
