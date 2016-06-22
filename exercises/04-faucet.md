@@ -103,10 +103,10 @@ As you can see this places 10 ports on the device with Data Path ID 1 into vlan 
 
 # Set environment variables
 
-``
+```
 export FAUCET_CONFIG=/etc/ryu/faucet/faucet.yaml
 export FAUCET_APP=/usr/local/lib/python2.7/dist-packages/ryu_faucet/org/onfsdn/faucet/
-``
+```
 
 # Start Ryu and the Faucet controller 
 You should still have 2 ssh sessions open. Start Ryu and the Faucet controller in the controller window.
