@@ -20,8 +20,13 @@ Choose the file Mininet-VM.ova
 
 Log in with the username and password mininet
 
-Obtain an Ip address from the dhcp server.
-dhcp eth0
+Find out what IP address is associated with your network interface to use for accessing the guest OS from the host OS. Note that we are using Ubuntu 16.04 so the new network interface naming conventions are the in place.
+
+``
+ifconfig enp0s8
+``
+
+
 
 ensureing that the VirtualBox network has been set to bridged adapter.
 Devices->Network->Network setting-> bridged adapter
