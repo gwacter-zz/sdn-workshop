@@ -1,12 +1,17 @@
 # Mininet/Faucet
 
-Thanks to ![alt text](https://pbs.twimg.com/profile_images/611397275860905984/8LpZGnOf.jpg "REANNZ logo")
-
 # Objectives
 
 In this session, we will use another python SDN application.  This time the application is known as Faucet.
 
-Faucet is an Openflow controller designed by the New Zealand research and education network REANNZ, to be a layer 2 switch based on OpenvApour's Valve. It handles MAC learning and supports VLANs.
+Faucet is an Openflow controller designed by the New Zealand research and education network REANNZ, to be a layer 2 switch based on OpenvApour's Valve. It handles MAC learning and supports VLANs. 
+
+Faucet has been implemented using the Ryu SDN controller framework.
+
+For more information about Faucet see:
+
+ * Blog: (https://faucet-sdn.blogspot.co.nz/)
+ * Source code: (https://github.com/REANNZ/faucet)
 
 It supports:
 
