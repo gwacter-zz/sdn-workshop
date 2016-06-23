@@ -1,14 +1,22 @@
 # Exercise 3
-#  Starting the RYU Openflow controller
 
-##Ensure that no other controller is present
+# Ryu Framework
+
+Ryu is a component-based software defined networking framework for writing software defined controllers. Ryu is written in Python and supports OpenFlow 1.0 through to 1.5. 
+
+In this exercise you will use work with the ryu implementation of a simple switch.
+
+We assume that ryu has already been installed and can be found in ``/usr/local/lib/python2.7/dist-packages``.
+
+# Starting the RYU Openflow controller
+
+## Ensure that no other controller is present
 
 ```
 root@mininet-vm:~# killall controller
 controller: no process found
 root@mininet-vm:~#
 ```
-
 
 Note that 'controller' is a simple OpenFlow reference controller implementation in linux.  We want to ensure that this is not running before we start our own controller.
 
@@ -19,11 +27,16 @@ root@mininet-vm:~# mn -c
 
 ```
 
-
 ## Start the Ryu controller
 
+For convenience set an environment variable that points at the directory containing the Ryu packages.
+
 ```
-root@mininet-vm:~# ryu-manager --verbose ~mininet/ryu/ryu/app/simple_switch_13.py
+export RYU_APP=/usr/local/lib/python2.7/dist-packages/ryu/app/
+```
+
+```
+root@mininet-vm:~# ryu-manager --verbose $RYU_APP/ryu/ryu/app/simple_switch_13.py
 loading app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py
 loading app ryu.controller.ofp_handler
 instantiating app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py of SimpleSwitch13
@@ -44,8 +57,6 @@ BRICK ofp_event
 # Understanding simple_switch.py
 
 We have now started the RYU controller with the simple_switch application.  The simple switch keeps track of where the host with each MAC address is located and accordingly sends packets towards the destination and not flood all ports.
-
-
 
 #Starting the Mininet environment
 
@@ -205,6 +216,7 @@ mininet>
 ```
 
 ## Ping from h1 to h2 once again
+
 Mininet Window
 
 ```
@@ -312,6 +324,7 @@ OFPST_FLOW reply (OF1.3) (xid=0x2):
 ```
 
 ## Ping all hosts once again
+
 Mininet Window
 
 ```
