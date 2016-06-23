@@ -56,7 +56,27 @@ BRICK ofp_event
 
 # Understanding simple_switch.py
 
-We have now started the RYU controller with the simple_switch application.  The simple switch keeps track of where the host with each MAC address is located and accordingly sends packets towards the destination and not flood all ports.
+We have now started the RYU controller with the simple_switch application that implements a simple learning swich.
+
+The simple switch keeps track of where the host with each MAC address is located and accordingly sends packets towards the destination and not flood all ports.
+
+OpenFlow switches can perform the following by receiving instructions from OpenFlow controllers such as Ryu.
+
+1. Rewrites the address of received packets or transfers the packets from the specified port.
+1. Transfers the received packets to the controller (Packet-In).
+1. Transfers the packets forwarded by the controller from the specified port (Packet-Out).
+
+It is possible to achieve a switching hub having those functions combined.
+
+First of all, you need to use the Packet-In function to learn MAC addresses. The controller can use the Packet-In function to receive packets from the switch. The switch analyzes the received packets to learn the MAC address of the host and information about the connected port.
+
+After learning, the switch transfers the received packets. The switch determines whether the destination MAC address of the packets belong to the learned host. Depending on the investigation results, the switch performs the following processing.
+
+1. If the host is already a learned host ... Uses the Packet-Out function to transfer the packets from the connected port.
+1. If the host is unknown host ... Use the Packet-Out function to perform flooding.
+
+You can read more about this application (including a walkthrough the code implemting it) here: 
+https://osrg.github.io/ryu-book/en/html/switching_hub.html
 
 #Starting the Mininet environment
 
@@ -104,7 +124,7 @@ move onto main mode
 
 ## Dump flows on switch s1
 
-A flow is the finest work unit of a switch. In Mininet, dpctl is a command that allows visibility and control over a single switch's flow table. It is especially useful for debugging, by viewing flow state and flow counters.
+A flow is the most fine-grained work unit of a switch. In Mininet, dpctl is a command that allows visibility and control over a single switch's flow table. It is especially useful for debugging, by viewing flow state and flow counters.
 
 ```
 mininet> dpctl dump-flows -O OpenFlow13
