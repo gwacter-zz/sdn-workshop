@@ -2,11 +2,13 @@
 
 # Ryu Framework
 
-Ryu is a component-based software defined networking framework for writing software defined controllers. Ryu is written in Python and supports OpenFlow 1.0 through to 1.5. 
+Ryu is a component-based software defined networking framework. If you want to manage openflow switches, you use the framework to write your Ryu application. Your application tells Ryu how you want to manage the switches to implement your desired functionality. Then Ryu configures the switches by using OpenFlow protocol, etc.
 
-In this exercise you will use work with the ryu implementation of a simple switch.
+Writing Ryu application is easy. It's just Python scripts.
 
-We assume that ryu has already been installed and can be found in ``/usr/local/lib/python2.7/dist-packages``.
+In this exercise you will use work with an existing Ryu implementation of a simple learning switch.
+
+You can [install ryu simply usig ``pip``](http://ryu.readthedocs.io/en/latest/getting_started.html) but we assume that you are using our VM that has ryu has already installed (by default in ``/usr/local/lib/python2.7/dist-packages``).
 
 # Starting the RYU Openflow controller
 
@@ -27,13 +29,15 @@ root@mininet-vm:~# mn -c
 
 ```
 
-## Start the Ryu controller
+## Start the Ryu simple switch application
 
 For convenience set an environment variable that points at the directory containing the Ryu packages.
 
 ```
 export RYU_APP=/usr/local/lib/python2.7/dist-packages/ryu/app/
 ```
+
+To execute a Ryu application you need to use the ``ryu-manager``. 
 
 ```
 root@mininet-vm:~# ryu-manager --verbose $RYU_APP/simple_switch_13.py
