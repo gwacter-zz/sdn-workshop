@@ -79,7 +79,8 @@ After learning, the switch transfers the received packets. The switch determines
 1. If the host is already a learned host ... Uses the Packet-Out function to transfer the packets from the connected port.
 1. If the host is unknown host ... Use the Packet-Out function to perform flooding.
 
-You can read more about this application (including a walkthrough the code implemting it) here: 
+You can read more about this application (including a walkthrough the code implemting it -- *I recommend looking at the code after you have experimented with the application*) here: 
+
 https://osrg.github.io/ryu-book/en/html/switching_hub.html
 
 #Starting the Mininet environment
@@ -385,7 +386,7 @@ waiting for iperf to start up...*** Results: ['22.5 Gbits/sec', '22.6 Gbits/sec'
 mininet>
 ```
 
-# Dump flows to see the flows which match
+## Dump flows to see the flows which match
 
 ```
 mininet> dpctl dump-flows -O OpenFlow13
@@ -402,6 +403,12 @@ cookie=0x0, duration=129.391s, table=0, n_packets=290931, n_bytes=14129626606, p
 ...
 ```
 
-
 Did any packets come to the controller?
+
 Where were most of the packets sent?
+
+# More Information
+
+Checkout: http://ryu.readthedocs.io/en/latest/index.html
+
+In particular writing your first application: http://ryu.readthedocs.io/en/latest/writing_ryu_app.html
