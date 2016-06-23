@@ -36,7 +36,7 @@ export RYU_APP=/usr/local/lib/python2.7/dist-packages/ryu/app/
 ```
 
 ```
-root@mininet-vm:~# ryu-manager --verbose $RYU_APP/ryu/ryu/app/simple_switch_13.py
+root@mininet-vm:~# ryu-manager --verbose $RYU_APP/simple_switch_13.py
 loading app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py
 loading app ryu.controller.ofp_handler
 instantiating app /usr/local/lib/python2.7/dist-packages/ryu/app/simple_switch_13.py of SimpleSwitch13
