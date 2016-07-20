@@ -28,8 +28,7 @@ ifconfig enp0s8
 
 
 
-ensureing that the VirtualBox network has been set to bridged adapter.
-Devices->Network->Network setting-> bridged adapter
+Check that the first adaptor is set to NAT and the second one to Host Only vmboxnet0
 
 now you should be able to ping from the underlying host to the VM...
 
