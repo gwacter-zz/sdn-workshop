@@ -77,19 +77,13 @@ BRICK ofp_event
 (18761) wsgi starting up on http://0.0.0.0:8080
 ```
 
-# Understanding simple_switch.py
+The controller is now running but not doing anything because no switches are connected to it.
 
-We have now started the RYU example firewall application that implements a simple stateless firewall.
-
-The firewall is interacted with using a RESTful interface.
-
-Now try it out.
-
-#Starting the Mininet environment
+# Using the Firewall
 
 ## Start mininet with 3 hosts connected to 1 switch
 
-(https://osrg.github.io/ryu-book/en/html/_images/fig13.png)
+<img src="https://osrg.github.io/ryu-book/en/html/_images/fig13.png" alt="example network, one switch and three hosts" title="example network" />()
 
 In the other window
 
