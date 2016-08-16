@@ -33,13 +33,13 @@ For convenience set an environment variable that points at the directory contain
 The example below is for my system, yours should be similar.
 
 ```
-export RYU_APP=/usr/local/lib/python2.7/dist-packages/ryu/app/
+$ export RYU_APP=/usr/local/lib/python2.7/dist-packages/ryu/app/
 ```
 
 To execute a Ryu application you need to use the ``ryu-manager``. 
 
 ```
-ryu-manager --verbose $RYU_APP/ryu.app.rest_firewall
+$ ryu-manager --verbose $RYU_APP/ryu.app.rest_firewall
 ```
 
 You should see:
@@ -83,14 +83,17 @@ The controller is now running but not doing anything because no switches are con
 
 ## Start mininet with 3 hosts connected to 1 switch
 
+We are going to use the network architecture shown below.
+
 <img src="https://osrg.github.io/ryu-book/en/html/_images/fig13.png" alt="example network, one switch and three hosts" title="example network" />()
 
-In the other window
+First, build an environment on Mininet. 
 
 ```
-root@mininet-vm:~# mn --topo=tree,1,3 --mac --controller=remote --switch ovsk,protocols=OpenFlow13
+$ sudo mn --topo single,3 --mac --switch ovsk --controller remote -x
 *** Creating network
 *** Adding controller
+Unable to contact the remote controller at 127.0.0.1:6633
 *** Adding hosts:
 h1 h2 h3
 *** Adding switches:
@@ -99,11 +102,13 @@ s1
 (h1, s1) (h2, s1) (h3, s1)
 *** Configuring hosts
 h1 h2 h3
+*** Running terms on localhost:10.0
 *** Starting controller
 *** Starting 1 switches
 s1
+
 *** Starting CLI:
-mininet>
+mininet>```
 ```
 
 ##Ensure that the bridge is using OpenFlow13
@@ -117,12 +122,20 @@ mininet> sh ovs-vsctl set bridge s1 protocols=OpenFlow13
 In the RYU controller window you should see a message similar to the following to show that the switch has connected to the controller and has exchanged information about its capabilities.
 
 ```
-connected socket:<eventlet.greenio.base.GreenSocket object at 0xb67fe8ac> address:('127.0.0.1', 39578)
-hello ev <ryu.controller.ofp_event.EventOFPHello object at 0xb67fe54c>
+connected socket:<eventlet.greenio.base.GreenSocket object at 0x7f92b3e01150> address:('127.0.0.1', 38638)
+EVENT ofp_event->dpset EventOFPStateChange
+connected socket:<eventlet.greenio.base.GreenSocket object at 0x7f92b3e01b50> address:('127.0.0.1', 38640)
+hello ev <ryu.controller.ofp_event.EventOFPHello object at 0x7f92b3e01750>
 move onto config mode
-EVENT ofp_event->SimpleSwitch13 EventOFPSwitchFeatures
-switch features ev version: 0x4 msg_type 0x6 xid 0xcfe991fe OFPSwitchFeatures(auxiliary_id=0,capabilities=71,datapath_id=1,n_buffers=256,n_tables=254)
+EVENT ofp_event->dpset EventOFPSwitchFeatures
+switch features ev version=0x4,msg_type=0x6,msg_len=0x20,xid=0x66e6e688,OFPSwitchFeatures(auxiliary_id=0,capabilities=79,datapath_id=1,n_buffers=256,n_tables=254)
 move onto main mode
+EVENT ofp_event->dpset EventOFPStateChange
+EVENT ofp_event->dpset EventOFPPortStatus
+DPSET: register datapath <ryu.controller.controller.Datapath object at 0x7f92b3e016d0>
+EVENT dpset->RestFirewallAPI EventDP
+DPSET: A port was modified.(datapath id = 0000000000000001, port number = 4294967294)
+[FW][INFO] dpid=0000000000000001: Join as firewall.
 ```
 
 ## Dump flows on switch s1
@@ -130,12 +143,33 @@ move onto main mode
 A flow is the most fine-grained work unit of a switch. In Mininet, dpctl is a command that allows visibility and control over a single switch's flow table. It is especially useful for debugging, by viewing flow state and flow counters.
 
 ```
-mininet> dpctl dump-flows -O OpenFlow13
+$ dpctl dump-flows -O OpenFlow13
 *** s1 ------------------------------------------------------------------------
 OFPST_FLOW reply (OF1.3) (xid=0x2):
- cookie=0x0, duration=2.481s, table=0, n_packets=0, n_bytes=0, priority=0 actions=FLOOD,CONTROLLER:64
-mininet>
+ cookie=0x0, duration=484.137s, table=0, n_packets=39, n_bytes=2430, priority=65535 actions=drop
+ cookie=0x0, duration=484.137s, table=0, n_packets=0, n_bytes=0, priority=0 actions=CONTROLLER:128
+ cookie=0x0, duration=484.137s, table=0, n_packets=0, n_bytes=0, priority=65534,arp actions=NORMAL
 ```
+
+The flow syntax is described in the man page for dpct (http://ranosgrant.cocolog-nifty.com/openflow/dpctl.8.html) under FLOW SYNTAX.
+
+Note that the output omits fields that are set to matched against ANY. Only specific matches are included.
+
+The fields 'n_packets' and 'n_bytes' tell us how many packets and the volume of packets that matched the rules for a given flow entry.
+
+There are three flows installed here are (in order shown above):
+
+   * any packet, action is drop packet (priority=65535) ... 
+   * any packet, action is send the first 128 bytes of the packet as a PACKET_IN message to controller (priority 0)
+   * any ARP packet, action is to process as you would in a NORMAL switch (priority 65534)
+
+Rules are matched in terms of the most specific and priorities are used to break ties (the highest number wins).
+
+You see from above that the switch behaviour specified by the flows is to process ARP packets normally and drop all other packets.
+
+
+
+
 
 
 # Passing packets
